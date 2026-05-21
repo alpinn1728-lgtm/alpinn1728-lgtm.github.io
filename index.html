@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aquafishstore Ikan Hias</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 50px;
+    background-color: #006064;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px 50px;
+}
+
+.hero-text {
+    max-width: 480px;
+}
+
+.hero-text h1 {
+    font-size: 46px;
+    color: #004d40;
+}
+
+.hero-text p {
+    font-size: 17px;
+    color: #333;
+    margin: 20px 0;
+}
+
+.hero-text button {
+    padding: 12px 22px;
+    background-color: #00838f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.hero-img {
+    width: 420px;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.produk-section {
+    padding: 50px;
+    background-color: #ffffff;
+}
+
+.produk-section h2 {
+    text-align: center;
+    color: #006064;
+    margin-bottom: 40px;
+}
+
+.produk {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background-color: #e0f2f1;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin: 12px 0 5px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #444;
+}
+
+.card strong {
+    display:block;
+    margin: 10px 0;
+    color: #004d40;
+}
+
+.card button {
+    background-color: #006064;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.produk-box{
+    border:2px solid #ccc;
+    padding:10px;
+    margin:5px 0;
+    border-radius:8px;
+    cursor:pointer;
+    background:white;
+}
+
+.produk-box.active{
+    background:#e0f7fa;
+    border-color:#006064;
+}
+
+.rating-display{
+    margin: 8px 0;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+#ratingInput{
+    display:flex;
+    gap:5px;
+    font-size:30px;
+    cursor:pointer;
+    margin-bottom:15px;
+}
+
+#ratingInput span{
+    color:gray;
+}
+
+#ratingInput span.active{
+    color:gold;
+}
+
+#bayar {
+    display: none;
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #e0f2f1;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #006064;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>🐠 AquaFishStore</h2>
+     <small>👥 Pengunjung: <span id="visitorCount">0</span></small>
+    <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#alamat">Alamat</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+    </ul>
+</nav>
+
+<section id="beranda" class="hero">
+    <div class="hero-text">
+        <h1>Ikan Hias Sehat & Berkualitas</h1>
+        <p>Menyediakan berbagai jenis ikan hias air tawar dan laut yang dirawat secara profesional.</p>
+        <button onclick="document.getElementById('produk').scrollIntoView()">Lihat Semua Produk</button>
+    </div>
+
+    <div class="hero-img">
+        <img src="Toko ikan hias.png">
+    </div>
+
+</section>
+
+<section id="produk" class="produk-section">
+    <h2>Produk Unggulan</h2>
+
+    <div class="produk">
+        <div class="card">
+            <img src="Platy.png">
+            <h3>IKAN PLATY</h3>
+            <p>Aktif dan lucu</p>
+            <strong>Rp 10.000</strong>
+            <div class="rating-display">
+            ⭐<span id="ratingPlaty">0</span>/5</div>
+            <p>Terjual: <span id="terjualPlaty">0</span></p>
+            <button onclick="beli('Ikan platy',10000,'ukuran 3-5cm, Ikan platy mudah dirawat di aquarium ukuran kecil atau sedang. Sediakan filter ringan, tanaman air, dan ganti air rutin. Ikan ini aktif dan cocok dicampur dengan ikan damai lainnya.')">Beli</button>
+
+        </div>
+
+        <div class="card">
+            <img src="discus.png">
+            <h3>IKAN DISCUS</h3>
+            <p>Ramah pemula</p>
+            <strong>Rp 12.000</strong>
+            <div class="rating-display">
+            ⭐<span id="ratingDiscus">0</span>/5</div>
+            <p>Terjual: <span id="terjualDiscus">0</span></p>
+            <button onclick="beli('Ikan discus',12000,'ukuran 5-8cm, Ikan discus membutuhkan aquarium cukup besar dengan air hangat dan bersih dengan suhu 28-30°C. Gunakan filter yang baik, jaga suhu stabil, dan beri pakan berkualitas agar warna tetap cerah dan tubuh sehat..')">Beli</button>
+
+        </div>
+
+        <div class="card">
+            <img src="Guupy.png">
+            <h3>IKAN GUUPY</h3>
+            <p>Kecil dan aktif</p>
+            <strong>Rp 15.000</strong>
+            <div class="rating-display">
+            ⭐<span id="ratingGuppy">0</span>/5</div>
+            <p>Terjual: <span id="terjualGuppy">0</span></p>
+            <button onclick="beli('Ikan Guppy',15000,'ukuran 2-4cm, Ikan guppy cocok dipelihara di aquarium kecil atau sedang dengan air bersih dan suhu stabil. Beri makan 2 kali sehari dalam jumlah cukup, ganti air secara rutin, dan tambahkan tanaman air agar ikan lebih nyaman dan sehat..')">Beli</button>
+        </div>
+        
+        <div class="card">
+            <img src="Cupang.png">
+            <h3>IKAN CUPANG</h3>
+            <p>Warna cerah dan agresif</p>
+            <strong>Rp 25.000</strong>
+            <div class="rating-display">
+            ⭐<span id="ratingCupang">0</span>/5</div>
+           <p>Terjual: <span id="terjualCupang">0</span></p>
+            <button onclick="beli('Ikan cupang',25000,'ukuran 3-6, Betta fish cocok dipelihara di aquarium kecil atau sedang dengan air tenang. Beri pakan 2 kali sehari dalam jumlah sedikit, jaga kebersihan air, dan hindari mencampur dua jantan dalam satu tempat karna mereka bisa saja berkelahi.')">Beli</button>
+        </div>
+
+        <div class="card">
+            <img src="Koi.png">
+            <h3>IKAN KOI</h3>
+            <p>Indah dan elegan</p>
+            <strong>Rp 110.000</strong>
+            <div class="rating-display">
+         ⭐<span id="ratingKoi">0</span>/5</div>
+            <p>Terjual: <span id="terjualKoi">0</span></p>
+            <button onclick="beli('Ikan Koi',110000,'ukuran 10-15cm, Ikan koi cocok dipelihara di kolam atau aquarium besar dengan air bersih dan sirkulasi lancar. Beri pakan teratur 2 kali sehari, ganti air secara rutin, dan hindari kolam terlalu penuh agar koi tumbuh sehat dan nyaman berenang.')">Beli</button>
+        </div>
+
+        <div class="card">
+            <img src="Arwana.png">
+            <h3>IKAN ARWANA</h3>
+            <p>Eksotis</p>
+            <strong>Rp 150.000</strong>
+            <div class="rating-display">
+            ⭐<span id="ratingArwana">0</span>/5</div>
+            <p>Terjual: <span id="terjualArwana">0</span></p>
+            <button onclick="beli('Ikan Arwana',150000,'ukuran 13-20cm, Ikan arwana cocok dipelihara di aquarium besar dan panjang agar bisa berenang bebas. Gunakan air bersih, beri makan rutin 2 kali sehari, dan pasang penutup aquarium karena arwana sering melompat.')">Beli</button>
+        </div>
+    </div>
+</section>
+
+<section id="bayar" class="produk-section">
+    <h2>Form Pembayaran</h2>
+
+    <p><strong>Produk:</strong> <span id="namaProduk"></span></p>
+    <p><strong>Total:</strong> Rp <span id="hargaProduk"></span></p>
+   <p><strong>Deskripsi:</strong> <span id="deskripsiProduk"></span></p>
+   <label>Jumlah Beli</label> <div style="display:flex; align-items:center; gap:10px;">
+     <button type="button" onclick="kurang()">➖</button>
+
+     <input type="number" id="jumlah" value="1" min="1" readonly style="width:60px; text-align:center;"> 
+     
+     <button type="button" onclick="tambah()">➕</button> 
+    
+    </div>
+
+   <p><strong>Total Bayar:</strong> Rp <span id="totalHarga"></span></p>
+
+   <form onsubmit="bayar(event)">
+
+    <label>Produk Tambahan (Opsional)</label>
+
+<div id="produkTambahan">
+   <div class="produk-box" data-nama="Ikan platy" data-harga="10000">Platy</div>
+<div class="produk-box" data-nama="Ikan discus" data-harga="12000">Discus</div>
+<div class="produk-box" data-nama="Ikan Guppy" data-harga="15000">Guppy</div>
+<div class="produk-box" data-nama="Ikan cupang" data-harga="25000">Cupang</div>
+<div class="produk-box" data-nama="Ikan Koi" data-harga="110000">Koi</div>
+<div class="produk-box" data-nama="Ikan Arwana" data-harga="150000">Arwana</div>
+</div>
+
+        <label>Nama Lengkap</label> 
+        <textarea id="namapembeli" required></textarea>
+        
+        <label>Alamat Lengkap</label>
+        <textarea id="alamatPembeli" required></textarea>
+
+        <label>No HP</label>
+        <input type="text" id="hpPembeli" 
+        oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+        required>
+
+        <label>Rating Produk</label>
+        <div id="ratingInput">
+         <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+    </div>
+
+        <label>Metode Pembayaran</label>
+        <select id="metode" required>
+            <option value="">-- Pilih --</option>
+           <option value="COD">COD</option>
+           <option value="QRIS">QRIS</option>
+        </select>
+
+        <div id="qrisBox" style="display:none; text-align:center; margin-top:15px;">
+    <h3>Scan QRIS untuk bayar</h3>
+    <img src="QRIS.jpeg" width="200">
+    <p>Scan pakai DANA / OVO / GoPay</p>
+</div>
+
+        <button type="submit">Bayar Sekarang</button>
+    </form>
+</section>
+
+<section class="produk-section">
+        <h2>Diagram Penjualan Ikan</h2>
+    <canvas id="chartPenjualan" height="80"></canvas>
+    </section>
+
+<section id="alamat" class="produk-section">
+    <h2>Alamat Toko</h2>
+    <p style="text-align:center;">Jatian pondok dalem kec,semboro kab,jember provinsi jawa timur</p>
+</section>
+
+<section id="kontak" class="produk-section">
+    <h2>Kontak</h2>
+    <p style="text-align:center;">
+    <a href="https://wa.me/6285126672841" target="_blank">
+        085126672841
+    </a>
+</p>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+let count = localStorage.getItem("visitorCount");
+
+if (count === null) {
+    count = 0;
+}
+
+count++;
+localStorage.setItem("visitorCount", count);
+
+document.getElementById("visitorCount").innerText = count;
+
+let produk = "";
+let harga = 0;
+let deskripsi = "";
+let terjual = JSON.parse(localStorage.getItem("ikanTerjual")) || {};
+
+let rating = 0;
+
+let dataRating = JSON.parse(localStorage.getItem("ratingProduk")) || {};
+
+function aktifkanRating() {
+
+    const stars = document.querySelectorAll("#ratingInput span");
+
+    stars.forEach((star, index) => {
+
+        star.addEventListener("click", function () {
+
+            rating = index + 1;
+
+            stars.forEach((s, i) => {
+
+                if (i < rating) {
+                    s.classList.add("active");
+                } else {
+                    s.classList.remove("active");
+                }
+
+            });
+
+        });
+
+    });
+
+}
+
+function updateRating(id, namaProduk){
+
+    if(dataRating[namaProduk]){
+        document.getElementById(id).innerText =
+        dataRating[namaProduk].rata.toFixed(1);
+    }
+
+}
+
+aktifkanRating();
+
+function tambah() {
+    let jumlah = document.getElementById("jumlah");
+    jumlah.value = parseInt(jumlah.value) + 1;
+    hitungTotal();
+}
+
+function kurang() {
+    let jumlah = document.getElementById("jumlah");
+    if (jumlah.value > 1) {
+        jumlah.value = parseInt(jumlah.value) - 1;
+        hitungTotal();
+    }
+}
+
+function updateTerjual(id, namaProduk) {
+    document.getElementById(id).innerText = terjual[namaProduk] || 0;
+}
+
+function hitungTotal() {
+
+    let j = document.getElementById("jumlah").value;
+
+    let total = harga * j;
+
+    // ambil produk tambahan yang dipilih
+    let tambahan = document.querySelectorAll(".produk-box.active");
+
+    // tambah harga produk tambahan
+    tambahan.forEach(item => {
+
+        total += parseInt(item.dataset.harga);
+
+    });
+
+    document.getElementById("totalHarga").innerText =
+    total.toLocaleString("id-ID");
+}
+function beli(n, h, d) {
+    produk = n;
+    harga = h;
+    deskripsi = d;
+
+    document.getElementById("namaProduk").innerText = n;
+    document.getElementById("hargaProduk").innerText = h;
+    document.getElementById("deskripsiProduk").innerText = d;
+
+    document.getElementById("bayar").style.display = "block";
+    document.getElementById("bayar").scrollIntoView({behavior:"smooth"});
+
+    document.getElementById("jumlah").value = 1;
+    hitungTotal();
+}
+
+function bayar(e) {
+    e.preventDefault();
+
+    let hp = document.getElementById("hpPembeli").value;
+
+    if(hp.length !== 12){
+    alert("Nomor HP harus 12 digit!");
+    return;
+    }
+
+    if(rating === 0){
+        alert("Silakan pilih rating bintang!");
+        return;
+    }
+
+    let jumlahUtama = parseInt(document.getElementById("jumlah").value);
+
+// ambil produk tambahan
+
+let total = harga * jumlahUtama;
+let daftar = produk + " x" + jumlahUtama + "\n";
+
+let selected = Array.from(document.querySelectorAll("#produkTambahan .produk-box.active"));
+
+selected.forEach(item => {
+    let nama = item.dataset.nama;
+    daftar += "- " + nama + "\n";
+});
+    let jumlah = parseInt(document.getElementById("jumlah").value);
+
+    if (!terjual[produk]) {
+        terjual[produk] = 0;
+    }
+
+    terjual[produk] += jumlah;
+
+    localStorage.setItem("ikanTerjual", JSON.stringify(terjual));
+
+    if(!dataRating[produk]){
+        dataRating[produk] = {
+            total:0,
+            jumlah:0,
+            rata:0
+        };
+    }
+
+    dataRating[produk].total += rating;
+    dataRating[produk].jumlah += 1;
+
+    dataRating[produk].rata =
+    dataRating[produk].total / dataRating[produk].jumlah;
+
+    localStorage.setItem("ratingProduk", JSON.stringify(dataRating));
+
+    updateTerjual("terjualPlaty", "Ikan platy");
+    updateTerjual("terjualDiscus", "Ikan discus");
+    updateTerjual("terjualGuppy", "Ikan Guppy");
+    updateTerjual("terjualCupang", "Ikan cupang");
+    updateTerjual("terjualKoi", "Ikan Koi");
+    updateTerjual("terjualArwana", "Ikan Arwana");
+
+    updateRating("ratingPlaty", "Ikan platy");
+    updateRating("ratingDiscus", "Ikan discus");
+    updateRating("ratingGuppy", "Ikan Guppy");
+    updateRating("ratingCupang", "Ikan cupang");
+    updateRating("ratingKoi", "Ikan Koi");
+    updateRating("ratingArwana", "Ikan Arwana");
+
+   alert(
+"PEMBAYARAN BERHASIL!\n\n" +
+daftar +
+"\nTotal: Rp " + total.toLocaleString("id-ID") +
+"\nRating: " + rating + " ⭐"
+);
+}
+
+function tampilkanChart() {
+    const ctx = document.getElementById('chartPenjualan').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Platy', 'Discus', 'Guppy', 'Cupang', 'Koi', 'Arwana'],
+            datasets: [{
+                label: 'Jumlah Terjual',
+                data: [
+                    terjual["Ikan platy"] || 0,
+                    terjual["Ikan discus"] || 0,
+                    terjual["Ikan Guppy"] || 0,
+                    terjual["Ikan cupang"] || 0,
+                    terjual["Ikan Koi"] || 0,
+                    terjual["Ikan Arwana"] || 0
+                ],
+                backgroundColor: [
+                    '#4db6ac',
+                    '#81c784',
+                    '#ff8a65',
+                    '#ba68c8',
+                    '#64b5f6',
+                    '#ffb74d'
+                ]
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            scales: {
+                x: {
+                     beginAtZero: true,
+                   ticks: {
+                        stepSize: 1   
+                    }
+                }
+            }
+        }
+    });
+}
+updateTerjual("terjualPlaty", "Ikan platy");
+updateTerjual("terjualDiscus", "Ikan discus");
+updateTerjual("terjualGuppy", "Ikan Guppy");
+updateTerjual("terjualCupang", "Ikan cupang");
+updateTerjual("terjualKoi", "Ikan Koi");
+updateTerjual("terjualArwana", "Ikan Arwana");
+
+updateRating("ratingPlaty", "Ikan platy");
+updateRating("ratingDiscus", "Ikan discus");
+updateRating("ratingGuppy", "Ikan Guppy");
+updateRating("ratingCupang", "Ikan cupang");
+updateRating("ratingKoi", "Ikan Koi");
+updateRating("ratingArwana", "Ikan Arwana");
+tampilkanChart();
+
+document.getElementById("metode").addEventListener("change", function(){
+
+    if(this.value === "QRIS"){
+        document.getElementById("qrisBox").style.display = "block";
+    }
+
+    else{
+        document.getElementById("qrisBox").style.display = "none";
+    }
+
+});   
+
+document.querySelectorAll(".produk-box").forEach(box => {
+    box.addEventListener("click", function () {
+
+        this.classList.toggle("active");
+
+        hitungTotal();
+
+    });
+});
+
+</script>
+
+</body>
+</html>
